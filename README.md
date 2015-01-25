@@ -8,7 +8,9 @@ Here we'll try to identify and put shame on languages that cannot saturate a gig
 
 ## udp-fixed-localhost-flood Benchmark
 
-Send as many UDP datagrams to `127.0.0.1:9999` as possible in 30 minutes. Each datagram should carry 64 Q letters. Output the hardcoded calibration constant (number of datagrams).
+Send as many UDP datagrams to `127.0.0.1:9999` as possible. Each datagram should carry 64 Q letters. 
+
+Hardcode the number of datagrams that makes the benchmark last about 30 seconds on your machine. Output the hardcoded calibration constant (number of datagrams).
 
 1M pps udp @ 64 bytes = 1M * (58 + 64) * 8 = 976 Mbps
 
