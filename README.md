@@ -18,3 +18,4 @@ Language | Packets | Time | pps | Gbps
 -------- |--------:| ----:| ---:| ----:
 Perl     |    100M |  30s |   3M|    3
 Node.JS  |     10M |  30s | 0.3M| *0.3*
+Haskell  |     10M |   4s |   3M|    3
