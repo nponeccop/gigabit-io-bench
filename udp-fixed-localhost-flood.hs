@@ -2,7 +2,7 @@ module Main where
 
 import Control.Applicative
 import Control.Exception
-import Control.Monad (when, replicateM)
+import Control.Monad (when, replicateM_)
 import Network.Socket hiding (sendTo, send)
 import Network.Socket.ByteString
 import qualified Data.ByteString.Char8 as B8
@@ -19,4 +19,4 @@ main = withSocketsDo $ do
   let loop = sendTo s b a >>= \i -> do
                 when (i==0)  $ throwIO (ErrorCall "fck")
                 when (i/=64) loop
-  replicateM toSend $ loop
+  replicateM_ toSend loop
