@@ -8,7 +8,7 @@ import Network.Socket.ByteString
 import qualified Data.ByteString.Char8 as B8
 
 toSend :: Int
-toSend = 10 * 1000 * 10000
+toSend = 10 * 1000 * 1000
 
 main = withSocketsDo $ do
   print toSend
