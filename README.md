@@ -16,6 +16,6 @@ Hardcode the number of datagrams that makes the benchmark last about 30 seconds 
 
 Language | Packets | Time | pps | Gbps  
 -------- |--------:| ----:| ---:| ----:
-Perl     |    100M |  30s |   3M|    3
+Perl     |     10M |  30s | 0.3M| *0.3*
 Node.JS  |     10M |  30s | 0.3M| *0.3*
-Haskell  |     10M |   4s |   3M|    3
+Haskell  |    100M |  40s |  30M|    3
