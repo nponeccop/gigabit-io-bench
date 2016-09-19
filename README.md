@@ -20,7 +20,7 @@ Node.JS  |      1M |  30s |0.03M| *0.03*
 Perl     |     10M |  30s | 0.3M| *0.3*
 Haskell  |    100M |  40s |   3M|  3
 
-# file-fixed-sequential-write benchmark
+## file-fixed-sequential-write Benchmark
 
 Write as many data as possible to `bench.bin` file as possible. 8 MB blocks of Q letters are acceptable.
 
