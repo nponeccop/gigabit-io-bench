@@ -1,33 +1,33 @@
-var dgram = require('dgram')
+'use strict';
 
-var s = dgram.createSocket('udp4')
+const dgram = require('dgram');
+const s = dgram.createSocket('udp4');
+const buf = new Buffer(64).fill('Q');
 
-var buf = new Buffer(64);
+let toSend = 6 * 1000 * 1000;
+const bulk = 100;
 
-for (var i = 0; i < 64; i++)
-{
-		buf[i] = 'Q'
+const send = cnt => {
+  const cb = err => {
+    if (err) {
+      console.log("err!");
+    }
+    toSend -= 1;
+    if (toSend === 0) {
+      s.close();
+    }
+
+    if (cnt > 0) {
+      cnt -= 1;
+      s.send(buf, 0, 64, 9999, '127.0.0.1', cb);
+    }
+  };
+
+  toSend += 1;
+  cb();
+};
+
+console.log(toSend);
+for(let i = 0; i < bulk; i++) {
+  send(toSend / bulk);
 }
-
-var toSend = 10 * 1000 * 100;
-
-function send()
-{
-		s.send(buf, 0, 64, 9999, '127.0.0.1', function (err)
-		{
-			if (err) console.log("err!");
-			if (toSend > 0)
-			{
-				// process.nextTick(send)
-				send()
-			}
-			else
-			{
-				s.close()
-			}	
-			toSend -= 1
-		})
-}
-
-send()
-console.log(toSend)
