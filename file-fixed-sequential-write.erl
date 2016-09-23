@@ -9,8 +9,9 @@ filesize(F) -> {ok,{file_info,S,_,_,_,_,_,_,_,_,_,_,_,_}}
 total() -> 30*1024*1024*1024.
 chunk() -> 8*1024*1024.
 
-main([]) -> io:format("usage: ./iops <any>~n", []);
+main([]) -> main(["bench.bin"]);
 main(Any) ->
+    io:format("~p~n",[total()]),
     Binary = binary:copy(<<"Q">>,chunk()),
     {ok, Server} = file:open(lists:concat(Any),[raw,binary,append]),
     {Time,_} = timer:tc(fun() -> [file:write(Server,Binary)
