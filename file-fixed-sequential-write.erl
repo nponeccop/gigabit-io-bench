@@ -7,11 +7,11 @@ filesize(F) -> {ok,{file_info,S,_,_,_,_,_,_,_,_,_,_,_,_}}
                =file:read_file_info(lists:concat(F)), S.
 
 total() -> 30*1024*1024*1024.
-chunk() -> 100*1024*1024.
+chunk() -> 8*1024*1024.
 
 main([]) -> io:format("usage: ./iops <any>~n", []);
 main(Any) ->
-    Binary = binary:copy(<<0>>,chunk()),
+    Binary = binary:copy(<<"Q">>,chunk()),
     {ok, Server} = file:open(lists:concat(Any),[raw,binary,append]),
     {Time,_} = timer:tc(fun() -> [file:write(Server,Binary)
                                  ||_<-lists:seq(1,total() div chunk())],ok end),
